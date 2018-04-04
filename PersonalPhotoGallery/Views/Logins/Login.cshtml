@@ -1,0 +1,35 @@
+﻿@model Core.ViewModels.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login if you are existing user</h2>
+
+<form method="post" asp-controller="Logins" asp-action="Login">
+    <div class="form-horizontal">
+        <p>
+            Please login to use your personal Photo Gallery
+        </p>
+        <div asp-validation-summary="ModelOnly" class="text-danger" />
+        <div class="form-group">
+            <label for="email" class="control-label col-md-2">Email address:</label>
+            <div class="col-md-10">
+                <input type="email" asp-for="Email" class="form-control" placeholder="email@example.com" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="control-label col-md-2">Password:</label>
+            <div class="col-md-10">
+                <input type="password" asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10 col-md-offset-2">
+                <input type="submit" class="btn btn-default" value="Sign In" />
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,35 @@
+﻿@model Core.ViewModels.LoginViewModel
+
+@{
+    ViewBag.Title = "Create User";
+}
+
+<h2>Sign Up!</h2>
+
+<form method="post" asp-controller="Logins" asp-action="Create">
+    <div class="form-horizontal">
+        <p>
+            Please sign up to use your personal Photo Gallery
+        </p>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label for="email" class="control-label col-md-2">Email address:</label>
+            <div class="col-md-10">
+                <input type="email" asp-for="Email" class="form-control" placeholder="email@example.com" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="control-label col-md-2">Password:</label>
+            <div class="col-md-10">
+                <input type="password" asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10 col-md-offset-2">
+                <input type="submit" class="btn btn-default" value="Sign Up!" />
+            </div>
+        </div>
+    </div>
+</form>
