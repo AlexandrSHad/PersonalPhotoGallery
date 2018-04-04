@@ -20,8 +20,8 @@ namespace Core.Services
         public async Task CreateUser(string email, string password)
         {
             _context.Users.Add(new User {
-                Email = "test@gmail.com",
-                Password = "123"
+                Email = email,
+                Password = password
             });
 
             await _context.SaveChangesAsync();
