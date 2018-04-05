@@ -26,6 +26,7 @@ namespace PersonalPhotoGallery.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (!ModelState.IsValid)
@@ -63,6 +64,7 @@ namespace PersonalPhotoGallery.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(LoginViewModel model)
         {
             if (!ModelState.IsValid)
