@@ -27,6 +27,8 @@ namespace PersonalPhotoGallery
         {
             services.AddMvc();
 
+            services.AddSession();
+
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DatabaseContext")));
             services.AddScoped<ILogins, SQLServerLogins>();
         }
@@ -45,6 +47,8 @@ namespace PersonalPhotoGallery
             }
 
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseMvc(routes =>
             {
