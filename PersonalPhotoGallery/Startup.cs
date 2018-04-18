@@ -31,6 +31,7 @@ namespace PersonalPhotoGallery
 
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DatabaseContext")));
             services.AddScoped<ILogins, SQLServerLogins>();
+            services.AddSingleton<IKeyGenerator, DefaultKeyGenerator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
