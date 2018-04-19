@@ -6,6 +6,7 @@ using Core.Interfaces;
 using Core.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PersonalPhotoGallery.Filters;
 
 namespace PersonalPhotoGallery.Controllers
 {
@@ -30,12 +31,14 @@ namespace PersonalPhotoGallery.Controllers
             return View();
         }
 
+        [ServiceFilter(typeof(LoginAttribute))]
         public IActionResult Upload()
         {
             return View();
         }
 
         [HttpPost]
+        [ServiceFilter(typeof(LoginAttribute))]
         public async Task<IActionResult> Upload(PhotoUploadViewModel model)
         {
             if (ModelState.IsValid)

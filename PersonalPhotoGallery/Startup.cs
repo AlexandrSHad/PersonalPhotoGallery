@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PersonalPhotoGallery.Filters;
 
 namespace PersonalPhotoGallery
 {
@@ -34,6 +35,7 @@ namespace PersonalPhotoGallery
             services.AddSingleton<IKeyGenerator, DefaultKeyGenerator>();
             services.AddScoped<IPhotoMetaData, SQLPhotoMetaData>();
             services.AddScoped<IFileStorage, LocalFileStorage>();
+            services.AddScoped<LoginAttribute>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
