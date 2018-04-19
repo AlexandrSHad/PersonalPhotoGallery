@@ -53,5 +53,13 @@ namespace PersonalPhotoGallery.Controllers
 
             return View();
         }
+
+        [ServiceFilter(typeof(LoginAttribute))]
+        public IActionResult Display()
+        {
+            var userName = HttpContext.Session.GetString("User");
+
+            return View("Display", userName);
+        }
     }
 }

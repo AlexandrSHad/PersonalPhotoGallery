@@ -1,0 +1,43 @@
+﻿@using Core.Interfaces
+@model string
+@inject IKeyGenerator _KeyGenerator
+@inject IPhotoMetaData _PhotoMetaData
+
+
+@{
+    ViewBag.Title = "Photo gallery";
+}
+
+<h2>Photo gallery</h2>
+
+<div class="body-content">
+    @{ 
+        const string rootPath = "PhotoStorage";
+        var key = _KeyGenerator.GetKey(Model);
+
+        var photos = await _PhotoMetaData.GetUserPhotos(Model);
+
+        while (photos.Count > 0)
+        {
+            <div class="row">
+                @{ 
+                    var threePhotos = photos.Take(3);
+
+                    foreach (var photo in threePhotos)
+                    {
+                        <div class="col-md-3">
+                            <figure>
+                                @{ 
+                                    var source = $"~/{rootPath}/{key}/{photo.FileName}";
+                                }
+                                <img src="@Url.Content(source)" class="img-thumbnail"/>
+                                <figcaption>@photo.Description</figcaption>
+                            </figure>
+                        </div>
+                    }
+                    photos.RemoveRange(0, threePhotos.Count());
+                }
+            </div>
+        }
+    }
+</div>

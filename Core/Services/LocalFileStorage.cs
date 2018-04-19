@@ -1,4 +1,5 @@
 ﻿using Core.Interfaces;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,17 @@ namespace Core.Services
 {
     public class LocalFileStorage : IFileStorage
     {
+        private readonly IHostingEnvironment _env;
+
+        public LocalFileStorage(IHostingEnvironment env)
+        {
+            _env = env;
+        }
+
         public async Task StoreFile(IFormFile file, string key)
         {
-            const string rootPath = "D:\\tmp\\PhotoStorage";
-            var path = $"{rootPath}\\{key}";
+            const string rootPath = "PhotoStorage";
+            var path = $"{_env.WebRootPath}\\{rootPath}\\{key}";
             var fullFilePath = $"{path}\\{file.FileName}";
 
             if (!Directory.Exists(path))
