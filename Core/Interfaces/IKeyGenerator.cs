@@ -6,6 +6,6 @@ namespace Core.Interfaces
 {
     public interface IKeyGenerator
     {
-        string GetKay(string emailAddress);
+        string GetKey(string emailAddress);
     }
 }
